@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        <p>{{ num }}</p>
+        <p>{{ doubleNum }}</p>
+        <button v-on:click="addNum">plus</button>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+    <script>
+/*
+computed는 데이터 값을 계산하고 캐싱하여 읽기 전용 계산된 속성을 제공하며, 
+watch는 데이터 변경을 감시하고 사용자 지정 로직을 실행하는 데 사용.
+간단한 계산은 computed를 사용하고, 더 복잡한 변경 사항을 감시하려면 watch를 사용하는 것이 유리.
+*/
+        new Vue({
+            el: '#app',
+            data: {
+                num: 10
+            },
+            computed: {
+                doubleNum: function() {
+                    return this.num * 2;
+                }
+            },
+            watch: {
+                num: function(newVal, oldVal) {
+                    this.logText(newVal);
+                }
+            },
+            methods: {
+                logText: function(text) {
+                    console.log('changed : ' + text);
+                },
+                addNum: function() {
+                    this.num++;
+                }
+            }
+        });
+    </script>
+</body>
+</html>
