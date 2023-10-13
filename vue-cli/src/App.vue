@@ -1,10 +1,13 @@
 <template>
   <div>
     {{ str }} {{ str2 }}
+    <app-header></app-header>
   </div>
 </template>
 
 <script>
+
+import AppHeader from './components/AppHeader.vue';
 
 // new Vue({
 //   data: {
@@ -20,6 +23,9 @@ export default {
       str: 'hi!',
       str2: 'hello?'
     }
+  },
+  components: {
+    'app-header': AppHeader
   }
 }
 </script>
